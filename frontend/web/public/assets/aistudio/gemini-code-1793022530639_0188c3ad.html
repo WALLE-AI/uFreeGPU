@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniGPU - 分布式异构算力租赁平台</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+
+    <!-- 顶部导航 -->
+    <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 p-2 rounded-lg text-white font-bold text-lg"><i class="fa-solid fa-network-wired"></i></div>
+                <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">OmniGPU Cloud</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#" class="text-indigo-400 border-b-2 border-indigo-400 pb-1">算力市场</a>
+                <a href="#" class="hover:text-white transition">我的实例</a>
+                <a href="#" class="hover:text-white transition">镜像仓库</a>
+                <a href="#" class="hover:text-white transition">算力贡献 (供应端)</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full border border-emerald-500/20 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    全网可用算力: 1,428 卡
+                </div>
+                <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-sm">U</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- 筛选与控制面板 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
+            <h1 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-filter text-indigo-400"></i> 异构算力自由市场
+            </h1>
+
+            <!-- 筛选器网格 -->
+            <div class="space-y-4 text-sm">
+                <!-- 显卡型号筛选 -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-slate-400 w-24">显卡型号：</span>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-indigo-600 text-white font-medium">全部型号</button>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">RTX 4090 (24G)</button>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">A100 (80G)</button>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">RTX 3090 (24G)</button>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">RTX 4080 / 4070Ti</button>
+                </div>
+
+                <!-- 计费与节点类型 -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-slate-400 w-24">节点品质：</span>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-indigo-600 text-white font-medium">不限</button>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition flex items-center gap-1">
+                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> 优质商用节点 (稳定性>99%)
+                    </button>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">社区闲置散户节点</button>
+                </div>
+
+                <!-- 计费模式 -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-slate-400 w-24">计费模式：</span>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium">按量计费 (按秒)</button>
+                    <button class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">包日 / 包周 (特惠)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 算力列表区 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- 卡片 1: 散户贡献的 4090 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-indigo-500/50 transition flex flex-col justify-between group">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-medium">散户节点 #A829</span>
+                            <h3 class="text-lg font-bold mt-1 text-white group-hover:text-indigo-400 transition">NVIDIA RTX 4090</h3>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xl font-bold text-indigo-400">¥ 2.1 <span class="text-xs text-slate-400 font-normal">/小时</span></div>
+                            <span class="text-xs text-emerald-400">可用 1 卡</span>
+                        </div>
+                    </div>
+
+                    <!-- 配置参数 -->
+                    <div class="space-y-2 text-xs text-slate-300 bg-slate-950/50 p-3 rounded-xl border border-slate-800/60 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">显存 / 驱动:</span>
+                            <span class="font-mono">24GB GDDR6X / 535.104</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">CPU / 内存:</span>
+                            <span class="font-mono">16 vCPU / 64 GB</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">网络带宽 (上/下):</span>
+                            <span class="font-mono text-cyan-400">100 Mbps / 50 Mbps</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">节点信誉度:</span>
+                            <span class="text-emerald-400 font-bold">99.2% (已稳定运行 45 天)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 pt-2 border-t border-slate-800/80">
+                    <button class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2.5 rounded-xl transition text-sm shadow-lg shadow-indigo-600/20">
+                        立即租用
+                    </button>
+                    <button class="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition text-sm">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 卡片 2: 散户贡献的 A100 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-indigo-500/50 transition flex flex-col justify-between group">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-0.5 rounded font-medium">专业节点 #B102</span>
+                            <h3 class="text-lg font-bold mt-1 text-white group-hover:text-indigo-400 transition">NVIDIA A100-PCIE</h3>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xl font-bold text-indigo-400">¥ 8.5 <span class="text-xs text-slate-400 font-normal">/小时</span></div>
+                            <span class="text-xs text-emerald-400">可用 2 卡 (可NVLink)</span>
+                        </div>
+                    </div>
+
+                    <!-- 配置参数 -->
+                    <div class="space-y-2 text-xs text-slate-300 bg-slate-950/50 p-3 rounded-xl border border-slate-800/60 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">显存 / 驱动:</span>
+                            <span class="font-mono">80GB HBM2e / 535.54</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">CPU / 内存:</span>
+                            <span class="font-mono">32 vCPU / 256 GB</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">网络带宽 (上/下):</span>
+                            <span class="font-mono text-cyan-400">1 Gbps / 1 Gbps</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">节点信誉度:</span>
+                            <span class="text-emerald-400 font-bold">100% (数据中心托管)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 pt-2 border-t border-slate-800/80">
+                    <button class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2.5 rounded-xl transition text-sm shadow-lg shadow-indigo-600/20">
+                        立即租用
+                    </button>
+                    <button class="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition text-sm">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 卡片 3: 性价比 RTX 3090 -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-indigo-500/50 transition flex flex-col justify-between group">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-medium">散户节点 #C411</span>
+                            <h3 class="text-lg font-bold mt-1 text-white group-hover:text-indigo-400 transition">NVIDIA RTX 3090</h3>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xl font-bold text-indigo-400">¥ 1.2 <span class="text-xs text-slate-400 font-normal">/小时</span></div>
+                            <span class="text-xs text-emerald-400">可用 4 卡</span>
+                        </div>
+                    </div>
+
+                    <!-- 配置参数 -->
+                    <div class="space-y-2 text-xs text-slate-300 bg-slate-950/50 p-3 rounded-xl border border-slate-800/60 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">显存 / 驱动:</span>
+                            <span class="font-mono">24GB GDDR6X / 525.60</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">CPU / 内存:</span>
+                            <span class="font-mono">12 vCPU / 64 GB</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">网络带宽 (上/下):</span>
+                            <span class="font-mono text-cyan-400">50 Mbps / 30 Mbps</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">节点信誉度:</span>
+                            <span class="text-amber-400 font-bold">95.4% (家庭宽带节点)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 pt-2 border-t border-slate-800/80">
+                    <button class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2.5 rounded-xl transition text-sm shadow-lg shadow-indigo-600/20">
+                        立即租用
+                    </button>
+                    <button class="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition text-sm">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

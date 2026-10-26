@@ -1,0 +1,6 @@
+{
+  "name": "OmniGPU 分布式异构算力调度与租赁平台",
+  "description": "连接全网散户与机房闲置 GPU 算力，面向 10 万+ AI 开发者的高性能、低成本分布式 GPU 调度系统与算力租赁商城（参考 AutoDL）。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

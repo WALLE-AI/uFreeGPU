@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniGPU - 去中心化 GPU 算力调度与租赁平台</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+
+    <!-- 顶部导航栏（未登录状态） -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 p-2 rounded-lg text-white font-bold text-lg"><i class="fa-solid fa-network-wired"></i></div>
+                <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">OmniGPU Cloud</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-indigo-400 transition">平台优势</a>
+                <a href="#market" class="hover:text-indigo-400 transition">算力大厅</a>
+                <a href="#provider" class="hover:text-indigo-400 transition">提供算力赚钱</a>
+                <a href="#architecture" class="hover:text-indigo-400 transition">技术与安全</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button class="text-sm text-slate-300 hover:text-white font-medium px-3 py-1.5 transition">登录</button>
+                <button class="text-sm bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-4 py-2 rounded-xl transition shadow-lg shadow-indigo-600/30">
+                    免费注册 / 开箱即用
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero 横幅区 -->
+    <section class="relative overflow-hidden pt-20 pb-16 bg-gradient-to-b from-indigo-950/30 via-slate-950 to-slate-950">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 px-4 py-1.5 rounded-full text-xs font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
+                下一代去中心化 GPU 动态调度网络
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                连接全网闲置 GPU 算力 <br>
+                <span class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">成本降低 50% 的 AI 开发体验</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-slate-400 text-lg mb-8">
+                智能调度全网散户与数据中心闲置显卡（RTX 4090 / A100 / 3090 等），秒级拉起 JupyterLab 与 SSH 环境，为 10 万+ 开发者提供极致性价比的算力引擎。
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                <a href="#market" class="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-xl shadow-indigo-600/30 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rocket"></i> 立即租用 GPU
+                </a>
+                <a href="#provider" class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-microchip text-emerald-400"></i> 出租闲置显卡赚钱
+                </a>
+            </div>
+
+            <!-- 数据指标展示 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur">
+                <div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-white">100,000+</div>
+                    <div class="text-xs text-slate-400 mt-1">注册 AI 开发者</div>
+                </div>
+                <div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-indigo-400">1,400+</div>
+                    <div class="text-xs text-slate-400 mt-1">在线调度节点</div>
+                </div>
+                <div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-emerald-400">99.5%</div>
+                    <div class="text-xs text-slate-400 mt-1">SLA 运行可靠度</div>
+                </div>
+                <div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-cyan-400">¥ 1.2/h</div>
+                    <div class="text-xs text-slate-400 mt-1">4090 最低起租价</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 双端价值主张（开发者 vs 算力提供者） -->
+    <section id="features" class="py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-white">两端赋能：让算力像水和电一样自由流动</h2>
+                <p class="text-slate-400 text-sm mt-2">解决 AI 开发者昂贵的算力痛点，帮算力拥有者最大化闲置变现</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 开发者端 -->
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-8 hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 bg-indigo-600/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">对于 AI 开发者 & 算法工程师</h3>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>极致性价比：</strong>相比传统集中式云厂商，价格降低 40%-60%。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>异构硬件全覆盖：</strong>从消费级 RTX 4090/3090 到企业级 A100/H800 自由选择。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>预装标准环境：</strong>开箱即用 PyTorch, TensorFlow, Stable Diffusion, vLLM 镜像。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>故障无感迁移：</strong>断网或节点下线时，自动调度并挂载最新 Checkpoint。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 散户端 -->
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-8 hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 bg-emerald-600/20 text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">对于 GPU 闲置拥有者（散户/机房）</h3>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>一键挂机收益：</strong>下载 OmniGPU Agent，3分钟接入网络自动接单。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>硬件零风险：</strong>内置温度监控与过热保护，确保硬件寿命不受损。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>灵活出租策略：</strong>支持定时自动上架/下架（例如仅夜间闲置时出租）。</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                            <span><strong>秒级结算提现：</strong>根据用户实际跑卡时长按秒结算，随时提现。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 核心技术安全保障（解答信任疑虑） -->
+    <section id="architecture" class="py-16 bg-slate-900/40 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-white">工业级异构调度与安全沙箱</h2>
+                <p class="text-slate-400 text-sm mt-2">自研节点内穿透与隔离技术，让去中心化算力如同本地调用般稳定安全</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 text-sm">
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                    <i class="fa-solid fa-shield-cat text-2xl text-indigo-400 mb-3"></i>
+                    <h4 class="font-bold text-white text-base mb-2">安全容器沙箱</h4>
+                    <p class="text-slate-400">使用 Docker/Kata Container 严格隔离环境，租户代码与散户宿主机完全隔绝，保证代码与模型文件绝对安全。</p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                    <i class="fa-solid fa-bolt text-2xl text-cyan-400 mb-3"></i>
+                    <h4 class="font-bold text-white text-base mb-2">P2P 内网穿透与转发</h4>
+                    <p class="text-slate-400">针对家用宽带等复杂的 NAT 环境，自研 P2P 隧道与 WebRTC 通信，保证 SSH/Jupyter 连接低延迟。</p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                    <i class="fa-solid fa-diagram-project text-2xl text-emerald-400 mb-3"></i>
+                    <h4 class="font-bold text-white text-base mb-2">智能信誉与调度引擎</h4>
+                    <p class="text-slate-400">基于节点网络质量、历史掉线率、温度表现进行动态评分，将高价值训练任务优先调度至高信誉节点。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 页脚 CTA -->
+    <section class="py-16 border-t border-slate-800 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-white mb-4">准备好体验极致性价比的 GPU 算力了吗？</h2>
+            <p class="text-slate-400 mb-8">新用户注册即赠送 10 元 GPU 试用金，秒级开启您的 AI 训练任务。</p>
+            <button class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl shadow-xl shadow-indigo-600/30 transition text-base">
+                立即免费注册账户
+            </button>
+        </div>
+    </section>
+
+</body>
+</html>
